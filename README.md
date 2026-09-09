@@ -1,70 +1,65 @@
 # Local Persona Chat
 
-An offline, fully localized LLM chat application featuring customizable AI personas and Retrieval-Augmented Generation (RAG) capabilities. Built with privacy and performance in mind, this project runs open-source models completely locally while maintaining independent chat sessions and contextual memory.
+An offline, privacy-focused LLM chat application built with Streamlit and powered locally by Ollama. It features streaming responses, persistent multi-session chat history, and customizable AI personas.
 
 ## 🚀 Features
 
-* **Customizable AI Personas:** Switch between dynamically prompted personas (e.g., Professor, Football Player) to tailor the assistant's tone and expertise.
-* **100% Offline Execution:** Powered by Ollama, ensuring that all prompts, documents, and chat histories remain completely on your local machine.
-* **Vector-Based Context Retrieval:** Integrates ChromaDB via Docker for efficient semantic search and document retrieval (RAG pipeline).
-* **Session Management:** Maintains independent chat sessions and saves historical chat data to local JSON files for persistent memory.
-* **Interactive UI & Robust Backend:** Features a clean Streamlit frontend communicating with a FastAPI backend.
+* **100% Local & Private:** Connects directly to local Ollama instances (`llama3.1`)—no data leaves your machine.
+* **Customizable Personas:** Switch dynamically between built-in personas (Professor, Mohamed Salah, Pirate, Clown, Standard Assistant) to adapt the tone and behavior of the model.
+* **Real-time Token Streaming:** Streams tokens live as they are generated using Ollama's HTTP chat endpoint.
+* **Multi-Session Chat History:** Create and switch between independent chat sessions, persisted locally via `local_chats.json`.
 
 ## 🛠️ Tech Stack
 
-* **Frontend:** Streamlit
-* **Backend:** FastAPI, Python
-* **LLM Engine:** Ollama (Open-source local models)
-* **Vector Database:** ChromaDB 
-* **Containerization:** Docker (ChromaDB deployment)
+* **Frontend & UI:** Streamlit
+* **LLM Engine:** Ollama (`llama3.1`)
+* **Language:** Python 3.10+
+* **Networking & Persistence:** Requests, JSON, UUID
 
 ## 📋 Prerequisites
 
-Before you begin, ensure you have the following installed:
-* [Python 3.8+](https://www.python.org/downloads/)
-* [Docker Desktop](https://www.docker.com/products/docker-desktop/) (for running ChromaDB)
-* [Ollama](https://ollama.ai/)
-
-**Pulling the Ollama Model:**
-Before running the application, make sure you pull the model you intend to use. For example:
+1. Install **[Ollama](https://ollama.ai/)**.
+2. Pull the default model used in the script:
 bash
-`ollama pull llama3`
+`ollama pull llama3.1`
 
 ⚙️ Installation & Setup
 1. Clone the repository:
 
 Bash
-`git clone https://github.com/Abdo-0x04/local-persona-chat.git
+`git clone [https://github.com/Abdo-0x04/local-persona-chat.git](https://github.com/Abdo-0x04/local-persona-chat.git)
 cd local-persona-chat`
 2. Set up a virtual environment:
 
 Bash
-`python -m venv venv`
-`source venv/bin/activate`  # On Windows use `venv\Scripts\activate`
+# Windows
+`python -m venv venv
+venv\Scripts\activate`
+
+# macOS / Linux
+`python3 -m venv venv
+source venv/bin/activate`
+
 3. Install dependencies:
 
 Bash
 `pip install -r requirements.txt`
-4. Start the ChromaDB Vector Store:
+
+💻 Running the App
+Start the Streamlit application:
 
 Bash
-`docker run -p 8000:8000 chromadb/chroma`
+`streamlit run local_persona_bot.py`
 
-💻 Usage
-1. Start the FastAPI backend:
-
-Bash
-`uvicorn main:app --reload`
-
-2. Launch the Streamlit frontend:
-Open a new terminal window and run:
-
-Bash
-`streamlit run app.py`
-
-3. Managing Personas:
-To add a new persona, edit the personas.json file (or config.py) to include your custom system prompts.
-
+**3. Managing Personas:**
+To add or modify a persona, simply edit the `PERSONAS` dictionary at the top of the `local_persona_bot.py` file:
+`python
+PERSONAS = {
+    "Your New Persona": "Your custom system prompt describing how the AI should act.",
+    "Standard Assistant": "You are a helpful, respectful, and concise AI assistant.",
+    # ...
+}
+`
 👤 Author
 Abdelrahman Sherif
 
