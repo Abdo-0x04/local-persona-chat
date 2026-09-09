@@ -1,0 +1,12 @@
+# Virtual environment
+venv/
+env/
+
+# Chat data & cache
+local_chats.json
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
