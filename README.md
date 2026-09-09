@@ -23,37 +23,47 @@ An offline, fully localized LLM chat application featuring customizable AI perso
 Before you begin, ensure you have the following installed:
 * [Python 3.8+](https://www.python.org/downloads/)
 * [Docker Desktop](https://www.docker.com/products/docker-desktop/) (for running ChromaDB)
-* [Ollama](https://ollama.ai/) (with your preferred model pulled, e.g., `ollama run llama3`)
+* [Ollama](https://ollama.ai/)
 
-## ⚙️ Installation & Setup
+**Pulling the Ollama Model:**
+Before running the application, make sure you pull the model you intend to use. For example:
+bash
+`ollama pull llama3`
 
-**1. Clone the repository:**
-```bash
-git clone [https://github.com/Abdo-0x04/local-persona-chat.git](https://github.com/Abdo-0x04/local-persona-chat.git)
-cd local-persona-chat
-```
+⚙️ Installation & Setup
+1. Clone the repository:
+
+Bash
+`git clone https://github.com/Abdo-0x04/local-persona-chat.git
+cd local-persona-chat`
 2. Set up a virtual environment:
-python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 
+Bash
+`python -m venv venv`
+`source venv/bin/activate`  # On Windows use `venv\Scripts\activate`
 3. Install dependencies:
-pip install -r requirements.txt
 
+Bash
+`pip install -r requirements.txt`
 4. Start the ChromaDB Vector Store:
-docker run -p 8000:8000 chromadb/chroma
+
+Bash
+`docker run -p 8000:8000 chromadb/chroma`
 
 💻 Usage
 1. Start the FastAPI backend:
 
 Bash
-(uvicorn main:app --reload)
+`uvicorn main:app --reload`
 
 2. Launch the Streamlit frontend:
-
 Open a new terminal window and run:
-Bash 
-(streamlit run app.py)
 
+Bash
+`streamlit run app.py`
+
+3. Managing Personas:
+To add a new persona, edit the personas.json file (or config.py) to include your custom system prompts.
 
 👤 Author
 Abdelrahman Sherif
