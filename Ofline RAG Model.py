@@ -32,7 +32,7 @@ def save_chats(chats_dict):
     with open(CHATS_FILE, "w") as f:
         json.dump(chats_dict, f, indent=4)
 
-st.set_page_config(page_title="LocalGPT", layout="wide")
+st.set_page_config(page_title="Offline Chat Bot", layout="wide")
 
 if "chats" not in st.session_state:
     st.session_state.chats = load_chats()
@@ -57,7 +57,7 @@ with st.sidebar:
         if st.button(f"💬 Chat {chat_id[:5]}", key=chat_id, use_container_width=True):
             st.session_state.current_chat_id = chat_id
 
-st.title(f"LocalGPT - {selected_persona} Mode")
+st.title(f"Offline Chat Bot - {selected_persona} Mode")
 
 current_history = st.session_state.chats[st.session_state.current_chat_id]
 for msg in current_history:
